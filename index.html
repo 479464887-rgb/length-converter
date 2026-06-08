@@ -32,6 +32,7 @@ select{width:100%;background:var(--bg);border:1px solid var(--border);border-rad
 <select id="from" onchange="conv()"><option value="m" selected>Meters</option><option value="ft">Feet</option><option value="in">Inches</option><option value="km">Kilometers</option><option value="mi">Miles</option><option value="cm">Centimeters</option><option value="mm">Millimeters</option><option value="yd">Yards</option></select>
 <div class="results" id="results"></div></div>
 <script>
+'use strict';
 const toM={m:1,ft:0.3048,in:0.0254,km:1000,mi:1609.344,cm:0.01,mm:0.001,yd:0.9144};
 const units=Object.keys(toM);
 function conv(){const v=parseFloat(document.getElementById('val').value)||0;const f=document.getElementById('from').value;const m=v*toM[f];document.getElementById('results').innerHTML=units.filter(u=>u!==f).map(u=>'<div class="r"><span>'+u+'</span><span class="val">'+(m/toM[u]).toFixed(4)+'</span></div>').join('')}conv();
